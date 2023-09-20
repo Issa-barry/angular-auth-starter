@@ -1,0 +1,25 @@
+<div class="auth">
+  <p>login works!</p>
+
+
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <p> <input type="mail"  formControlName="mail"   name="mail"  /> </p>
+       <!-- MESSAGE D'ERREUR mail -->
+       <small class="form-text text-muted" *ngFor="let error of error_messages.mail">
+        <p style="color: brown;" class="text-danger" *ngIf="loginForm.controls['mail'].hasError(error.type) && (loginForm.controls['mail'].dirty || loginForm.controls['mail'].touched)">
+            {{error.message}}
+        </p>
+    </small>
+
+      <p> <input type="password" formControlName="pwd" name="pwd" /> </p>
+        <!-- MESSAGE D'ERREUR mail -->
+        <small class="form-text text-muted" *ngFor="let error of error_messages.pwd">
+          <p style="color: brown;" *ngIf="loginForm.controls['pwd'].hasError(error.type) && (loginForm.controls['pwd'].dirty || loginForm.controls['pwd'].touched)">
+              {{error.message}}
+          </p>
+      </small>
+
+      <p> <button type="submit" > Connexion </button> </p>
+  </form>
+
+</div>
