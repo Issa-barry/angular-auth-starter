@@ -43,28 +43,71 @@ export class AuthenticationService {
   }
 
   private handleError<T>(operation = 'operation', result?: T) {
+
     return (error: any): Observable<T> => {
+
       console.error(error);
+
       this.log(`${operation} failed: ${error.message}`);
 
       return of(result as T);
+
     };
+
   }
 
   /************************************************
    *        METHODES
    ************************************************/
-  login(obj:any){
-    return this.http.post(this.api+"/login", obj, httpOption).pipe(
-      catchError(this.handleError(`login`, obj))
+  register(obj: any){
+
+    return this.http.post(this.api+"/register", obj, httpOption).pipe(
+
+      catchError(this.handleError(`register`, obj))
+
     )
+
+   }
+
+
+
+//    register(
+//     nom     : string, 
+//     prenom  : string, 
+//     tel     : string, 
+//     email   : string, 
+//     adresse : string, 
+//     pwd     : string,
+//     role    : string){
+
+// return this.http.post(this.api+"/register", {nom, prenom, tel, email, adresse, pwd, role}, httpOption).pipe(
+
+// catchError(this.handleError(`register`, {nom, prenom, tel, email, adresse, pwd, role}))
+
+// )
+
+// }
+
+  login(obj:any){
+
+    return this.http.post(this.api+"/login", obj, httpOption).pipe(
+
+      catchError(this.handleError(`login`, obj))
+
+    )
+
    }
 
    isloggedIn(){
+
     return this.token.isValid()
+
   }
  
   changeAuthStatus(value: boolean){
+
     this.loggedIn.next(value)
+
   }
-}
+
+}//#

@@ -1,1 +1,75 @@
-<p>register works!</p>
+<div class="auth">
+    <p>Register</p>
+  
+  
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <p> <input type="text"  formControlName="nom"   name="nom"  placeholder="nom"/> </p>
+        <!-- MESSAGE D'ERREUR email -->
+        <small class="form-text text-muted" *ngFor="let error of error_messages.nom">
+         <p style="color: brown;" class="text-danger" *ngIf="registerForm.controls['nom'].hasError(error.type) && (registerForm.controls['nom'].dirty || registerForm.controls['nom'].touched)">
+             {{error.message}}
+         </p>
+     </small>
+
+     <p> <input type="text"  formControlName="prenom"   name="prenom"  placeholder="prenom"/> </p>
+     <!-- MESSAGE D'ERREUR email -->
+     <small class="form-text text-muted" *ngFor="let error of error_messages.prenom">
+      <p style="color: brown;" class="text-danger" *ngIf="registerForm.controls['prenom'].hasError(error.type) && (registerForm.controls['prenom'].dirty || registerForm.controls['prenom'].touched)">
+          {{error.message}}
+      </p>
+  </small>
+
+  
+  <p> <input type="text"  formControlName="tel"   name="tel"  placeholder="tel"/> </p>
+  <!-- MESSAGE D'ERREUR email -->
+  <small class="form-text text-muted" *ngFor="let error of error_messages.tel">
+      <p style="color: brown;" class="text-danger" *ngIf="registerForm.controls['tel'].hasError(error.type) && (registerForm.controls['tel'].dirty || registerForm.controls['tel'].touched)">
+       {{error.message}}
+      </p>
+   </small>
+
+    
+  <p> <input type="text"  formControlName="adresse"   name="adresse"  placeholder="adresse"/> </p>
+  <!-- MESSAGE D'ERREUR email -->
+  <small class="form-text text-muted" *ngFor="let error of error_messages.adresse">
+      <p style="color: brown;" class="text-danger" *ngIf="registerForm.controls['adresse'].hasError(error.type) && (registerForm.controls['adresse'].dirty || registerForm.controls['adresse'].touched)">
+       {{error.message}}
+      </p>
+   </small>
+
+        <p> <input type="mail"  formControlName="email"   name="email"  placeholder="Email"/> </p>
+         <!-- MESSAGE D'ERREUR email -->
+         <small class="form-text text-muted" *ngFor="let error of error_messages.email">
+          <p style="color: brown;" class="text-danger" *ngIf="registerForm.controls['email'].hasError(error.type) && (registerForm.controls['email'].dirty || registerForm.controls['email'].touched)">
+              {{error.message}}
+          </p>
+      </small>
+  
+      <p> <input type="password" formControlName="pwd" name="pwd" placeholder="Password"/> </p>
+      <!-- MESSAGE D'ERREUR email -->
+      <small class="form-text text-muted" *ngFor="let error of error_messages.pwd">
+        <p style="color: brown;" *ngIf="registerForm.controls['pwd'].hasError(error.type) && (registerForm.controls['pwd'].dirty || registerForm.controls['pwd'].touched)">
+            {{error.message}}
+        </p>
+    </small>
+
+    <p> <input type="password" formControlName="confPwd" name="confPwd" placeholder="Confirmer password"/> </p>
+    <!-- MESSAGE D'ERREUR email -->
+    <small class="form-text text-muted" *ngFor="let error of error_messages.pwd">
+      <p style="color: brown;" *ngIf="
+                                    registerForm.controls['confPwd'].hasError(error.type) 
+                                    && (registerForm.controls['confPwd'].dirty 
+                                    || registerForm.controls['confPwd'].touched
+                                     )">
+          {{error.message}}
+      </p>
+      
+    <p *ngIf="registerForm.controls['confPwd'].touched || f['confPwd'].errors"> Les mots de passe doivent être </p>
+      <!-- <p>{{ registerForm.errors }}</p> -->
+  </small>
+  
+        <p> <button type="submit" > M'inscrir </button> </p>
+    </form>
+  
+  </div>
+  

@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+*{
+    list-style-type: none;
+  }
+  
+  .auth
+  {
+    width: 30%;
+    margin: auto;
+    margin-top: 5%;
+  }
+  
